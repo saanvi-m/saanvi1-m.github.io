@@ -1,9 +1,4 @@
-# We'll generate a zip file with the updated index.html and placeholder image.
-from zipfile import ZipFile
-from pathlib import Path
 
-# HTML content (enhanced, interactive, professional resume)
-html_content = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -212,23 +207,3 @@ html_content = """
   <footer>&copy; 2025 Saanvi Mahapatra — Built with ❤️</footer>
 </body>
 </html>
-"""
-
-# Write index.html to temp folder
-folder = Path("/mnt/data/saanvi_resume_site")
-folder.mkdir(parents=True, exist_ok=True)
-index_file = folder / "index.html"
-with open(index_file, "w") as f:
-    f.write(html_content)
-
-# Create a placeholder profile image (can be replaced by user)
-placeholder_image = folder / "profile.jpg"
-placeholder_image.write_bytes(b"")  # Blank file as placeholder
-
-# Create ZIP archive
-zip_path = "/mnt/data/saanvi_resume_website.zip"
-with ZipFile(zip_path, "w") as zipf:
-    zipf.write(index_file, arcname="index.html")
-    zipf.write(placeholder_image, arcname="profile.jpg")
-
-zip_path
