@@ -1,117 +1,128 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Saanvi Mahapatra | Resume</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #fff5f5;
-      --accent: #f45b69;
-      --text: #1e1e1e;
+      --primary: #fff6f6;
+      --accent: #ff7f7f;
+      --text: #222;
       --card: #ffffff;
-      --shadow: rgba(0,0,0,0.06);
-      --highlight: #ffe5e5;
+      --shadow: rgba(0, 0, 0, 0.05);
     }
+
     * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
+
     body {
       font-family: 'Inter', sans-serif;
-      background: var(--primary);
+      background-color: var(--primary);
       color: var(--text);
       line-height: 1.6;
-      padding-bottom: 3rem;
+      padding-bottom: 50px;
     }
+
     header {
+      text-align: center;
       background: var(--accent);
       color: white;
-      text-align: center;
       padding: 2rem 1rem;
-      position: relative;
     }
+
     header img {
-      width: 130px;
-      height: 130px;
+      width: 120px;
+      height: 120px;
       border-radius: 50%;
       object-fit: cover;
-      border: 4px solid white;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      border: 3px solid white;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
     }
+
     h1 {
-      font-size: 2.2rem;
+      font-size: 2rem;
       margin-top: 1rem;
     }
+
     .subtitle {
-      font-size: 1rem;
       opacity: 0.9;
+      font-size: 1rem;
     }
+
     section {
       max-width: 900px;
       margin: auto;
       padding: 2rem 1rem;
     }
+
     h2 {
-      border-left: 5px solid var(--accent);
+      border-left: 4px solid var(--accent);
       padding-left: 10px;
       margin-bottom: 1rem;
       font-size: 1.4rem;
     }
+
+    .card {
+      background: var(--card);
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      box-shadow: 0 2px 6px var(--shadow);
+      margin-bottom: 1.5rem;
+    }
+
     ul.skills {
+      list-style: none;
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
-      list-style: none;
+      margin-top: 10px;
     }
+
     ul.skills li {
-      background: var(--highlight);
-      padding: 8px 12px;
+      background: #ffe5e5;
+      padding: 6px 14px;
       border-radius: 20px;
       font-size: 0.9rem;
     }
-    .card {
-      background: var(--card);
-      border-radius: 8px;
-      box-shadow: 0 2px 6px var(--shadow);
-      padding: 1rem;
-      margin-bottom: 1.5rem;
-      transition: transform 0.3s ease;
+
+    ul {
+      padding-left: 20px;
+      margin-top: 10px;
     }
-    .card:hover {
-      transform: translateY(-3px);
-    }
-    .card h3 {
-      margin-bottom: 0.3rem;
-    }
-    .card p, .card ul {
-      font-size: 0.95rem;
-    }
+
     footer {
-      text-align: center;
-      padding: 1rem;
       background: var(--accent);
       color: white;
-      font-size: 0.85rem;
-      position: relative;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
       bottom: 0;
       width: 100%;
     }
+
     a {
       color: var(--accent);
       text-decoration: none;
     }
+
+    .card blockquote {
+      margin-top: 10px;
+      font-style: italic;
+      border-left: 4px solid var(--accent);
+      padding-left: 10px;
+    }
   </style>
 </head>
+
 <body>
 
   <header>
-    <img src="profile.jpg" alt="Saanvi Mahapatra">
+    <img src="profile.jpg" alt="Saanvi Mahapatra" />
     <h1>Saanvi Mahapatra</h1>
     <p class="subtitle">Associate Engineer | Aspiring Data Analyst</p>
   </header>
@@ -165,9 +176,11 @@
 
   <section>
     <h2>Testimonials</h2>
-    <div class="card"><strong>Teammate:</strong> Your ability to work effectively as part of a team was integral to our success.</div>
-    <div class="card"><strong>Team Lead:</strong> Saanvi showed commitment and provided KT to new team members in DSP.</div>
-    <div class="card"><strong>Manager:</strong> Thank you for your valuable support and achieving 9ZEROs in DSP. Keep it up!</div>
+    <div class="card">
+      <blockquote><strong>Teammate:</strong> Congratulations to Saanvi on a job well done! Your ability to work effectively as part of a team was integral to our success.</blockquote>
+      <blockquote><strong>Team Lead:</strong> Saanvi has shown dedication & commitment towards daily BAU. She also helped to provide functional KT to new team members in DSP.</blockquote>
+      <blockquote><strong>Manager:</strong> Thank you for your valuable support in Q1'25, especially 9ZEROs in DSP multiple times. Keep up the high spirit!</blockquote>
+    </div>
   </section>
 
   <section>
@@ -204,6 +217,9 @@
     </div>
   </section>
 
-  <footer>&copy; 2025 Saanvi Mahapatra — Built with ❤️</footer>
+  <footer>
+    &copy; 2025 Saanvi Mahapatra • Built with ❤️
+  </footer>
+
 </body>
 </html>
