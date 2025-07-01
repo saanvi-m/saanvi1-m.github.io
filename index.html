@@ -1,85 +1,111 @@
+# We'll generate a zip file with the updated index.html and placeholder image.
+from zipfile import ZipFile
+from pathlib import Path
+
+# HTML content (enhanced, interactive, professional resume)
+html_content = """
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Saanvi Mahapatra | Resume</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
   <style>
     :root {
-      --primary: #fceaea;
-      --accent: #ff9a9a;
-      --text: #333;
-      --soft: #fff7f7;
+      --primary: #fff5f5;
+      --accent: #f45b69;
+      --text: #1e1e1e;
+      --card: #ffffff;
+      --shadow: rgba(0,0,0,0.06);
+      --highlight: #ffe5e5;
+    }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
     body {
-      margin: 0;
       font-family: 'Inter', sans-serif;
-      background-color: var(--soft);
+      background: var(--primary);
       color: var(--text);
       line-height: 1.6;
+      padding-bottom: 3rem;
     }
     header {
-      background: var(--primary);
-      padding: 2rem;
+      background: var(--accent);
+      color: white;
       text-align: center;
+      padding: 2rem 1rem;
+      position: relative;
     }
     header img {
-      width: 120px;
-      height: 120px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       object-fit: cover;
-      box-shadow: 0 0 8px rgba(0,0,0,0.2);
+      border: 4px solid white;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
     }
     h1 {
-      margin: 1rem 0 0.2rem;
-      font-size: 1.8rem;
+      font-size: 2.2rem;
+      margin-top: 1rem;
     }
-    p.subtitle {
-      margin: 0;
-      color: #666;
+    .subtitle {
+      font-size: 1rem;
+      opacity: 0.9;
     }
     section {
-      padding: 1.5rem;
-      max-width: 800px;
+      max-width: 900px;
       margin: auto;
+      padding: 2rem 1rem;
     }
     h2 {
-      color: var(--accent);
-      border-bottom: 1px solid var(--accent);
-      padding-bottom: 0.3rem;
+      border-left: 5px solid var(--accent);
+      padding-left: 10px;
+      margin-bottom: 1rem;
+      font-size: 1.4rem;
     }
     ul.skills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
       list-style: none;
-      padding: 0;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-      gap: 0.5rem;
     }
     ul.skills li {
-      background: var(--primary);
-      padding: 0.5rem;
-      border-radius: 6px;
-      text-align: center;
+      background: var(--highlight);
+      padding: 8px 12px;
+      border-radius: 20px;
       font-size: 0.9rem;
     }
-    .job, .education {
-      margin-bottom: 1rem;
+    .card {
+      background: var(--card);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px var(--shadow);
+      padding: 1rem;
+      margin-bottom: 1.5rem;
+      transition: transform 0.3s ease;
     }
-    .job h3, .education h3 {
-      margin-bottom: 0.2rem;
-      font-size: 1rem;
+    .card:hover {
+      transform: translateY(-3px);
     }
-    .job span, .education span {
-      font-size: 0.85rem;
-      color: #777;
+    .card h3 {
+      margin-bottom: 0.3rem;
+    }
+    .card p, .card ul {
+      font-size: 0.95rem;
     }
     footer {
       text-align: center;
       padding: 1rem;
+      background: var(--accent);
+      color: white;
       font-size: 0.85rem;
-      background-color: var(--primary);
-      margin-top: 2rem;
+      position: relative;
+      bottom: 0;
+      width: 100%;
     }
     a {
       color: var(--accent);
@@ -88,6 +114,7 @@
   </style>
 </head>
 <body>
+
   <header>
     <img src="profile.jpg" alt="Saanvi Mahapatra">
     <h1>Saanvi Mahapatra</h1>
@@ -96,62 +123,112 @@
 
   <section>
     <h2>Summary</h2>
-    <p>Motivated Computer Science Engineer with hands-on experience at Ericsson. Skilled in SQL, incident management, and troubleshooting, with a track record of improving team efficiency and SLA adherence. Passionate about learning and problem-solving, aiming for impactful roles in data analytics.</p>
+    <div class="card">
+      <p>Computer Science Engineer with hands-on experience in incident management, SQL, troubleshooting, and application support at Ericsson. Known for reducing negative feedback by 80% and achieving 90% SLA adherence. Passionate about data-driven impact, collaboration, and continuous improvement.</p>
+    </div>
   </section>
 
   <section>
     <h2>Skills</h2>
-    <ul class="skills">
-      <li>SQL</li>
-      <li>Incident Management</li>
-      <li>Application Support</li>
-      <li>Kibana</li>
-      <li>WebLogic</li>
-      <li>Red Hat OpenShift</li>
-      <li>HP SM</li>
-      <li>Putty</li>
-      <li>Excel</li>
-      <li>Reporting</li>
-    </ul>
+    <div class="card">
+      <h3>Technical Skills</h3>
+      <ul class="skills">
+        <li>SQL</li><li>Python</li><li>Putty</li><li>Docker</li><li>Kubernetes</li><li>Visualization</li><li>Analysis</li>
+      </ul>
+      <h3>Soft Skills</h3>
+      <ul class="skills">
+        <li>Constructive Approach</li><li>Application Support</li><li>Team Collaboration</li>
+      </ul>
+      <h3>Tools</h3>
+      <ul class="skills">
+        <li>HP SM</li><li>WebLogic</li><li>Oracle SQL</li><li>Kibana</li><li>AppDynamics</li><li>RedHat OpenShift</li><li>Maximo</li>
+      </ul>
+    </div>
   </section>
 
   <section>
     <h2>Experience</h2>
-    <div class="job">
+    <div class="card">
       <h3>Associate Engineer Trainee – Ericsson Global India</h3>
-      <span>Oct 2024 – Present</span>
-      <p>Resolved 20–30 user-reported tickets daily with 90% SLA adherence. Documented known issues, used SQL and HP SM, and collaborated with a 7-member team for improved workflows and resolution times.</p>
+      <p><em>Oct 2024 – Present</em></p>
+      <ul>
+        <li>Resolved tickets for 20–30 users daily with 90% SLA adherence.</li>
+        <li>Used HP SM, Oracle SQL, and Excel for ticket tracking and reports.</li>
+        <li>Streamlined issue documentation and boosted team efficiency.</li>
+        <li>Worked with Kibana, AppDynamics, RedHat OpenShift for analysis.</li>
+      </ul>
     </div>
-    <div class="job">
+    <div class="card">
       <h3>Intern – Ericsson Global India</h3>
-      <span>Jan 2024 – Oct 2024</span>
-      <p>Assisted team in ticket auditing and backend operations. Contributed to reducing negative feedback by 80% through improved ticket handling and compliance processes.</p>
+      <p><em>Jan 2024 – Oct 2024</em></p>
+      <ul>
+        <li>Supported ticket auditing for 250+ team members using HP SM & Excel.</li>
+        <li>Reduced user feedback issues by 80% through process improvement.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <h2>Testimonials</h2>
+    <div class="card"><strong>Teammate:</strong> Your ability to work effectively as part of a team was integral to our success.</div>
+    <div class="card"><strong>Team Lead:</strong> Saanvi showed commitment and provided KT to new team members in DSP.</div>
+    <div class="card"><strong>Manager:</strong> Thank you for your valuable support and achieving 9ZEROs in DSP. Keep it up!</div>
+  </section>
+
+  <section>
+    <h2>Highlights & Blog Snippets</h2>
+    <div class="card">
+      <ul>
+        <li>✅ Implemented SQL-based ticket tagging — improved response time by 20%</li>
+        <li>⚙️ Automated Linux server health checks (disk + CPU usage)</li>
+        <li>🗂️ Maintained zero-ticket backlog in DSP for 1 full week</li>
+      </ul>
     </div>
   </section>
 
   <section>
     <h2>Education</h2>
-    <div class="education">
+    <div class="card">
       <h3>B.Tech in Computer Science – SMIT</h3>
-      <span>Aug 2019 – Aug 2023</span>
+      <p><em>Aug 2019 – Aug 2023</em></p>
     </div>
-    <div class="education">
+    <div class="card">
       <h3>Secondary Education – DPS Kalinga</h3>
-      <span>Mar 2018 – Mar 2019</span>
+      <p><em>Mar 2018 – Mar 2019</em></p>
     </div>
   </section>
 
   <section>
     <h2>Contact</h2>
-    <p>Email: <a href="mailto:saanvimahapatra@gmail.com">saanvimahapatra@gmail.com</a></p>
-    <p>Phone: 7008397180</p>
-    <p>Location: Noida, India</p>
-    <p>LinkedIn: <a href="https://www.linkedin.com/in/saanvi-mahapatra-9b3a1" target="_blank">/saanvi-mahapatra</a></p>
-    <p>Instagram: <a href="https://www.instagram.com/__.recreate.__/" target="_blank">@__.recreate.__</a></p>
+    <div class="card">
+      <p>Email: <a href="mailto:saanvimahapatra@gmail.com">saanvimahapatra@gmail.com</a></p>
+      <p>Phone: 7008397180</p>
+      <p>Location: Noida, India</p>
+      <p>LinkedIn: <a href="https://www.linkedin.com/in/saanvi-mahapatra-9b3a1" target="_blank">saanvi-mahapatra</a></p>
+      <p>Instagram: <a href="https://www.instagram.com/__.recreate.__/" target="_blank">@__.recreate.__</a></p>
+    </div>
   </section>
 
-  <footer>
-    &copy; 2025 Saanvi Mahapatra. Made with ❤️
-  </footer>
+  <footer>&copy; 2025 Saanvi Mahapatra — Built with ❤️</footer>
 </body>
 </html>
+"""
+
+# Write index.html to temp folder
+folder = Path("/mnt/data/saanvi_resume_site")
+folder.mkdir(parents=True, exist_ok=True)
+index_file = folder / "index.html"
+with open(index_file, "w") as f:
+    f.write(html_content)
+
+# Create a placeholder profile image (can be replaced by user)
+placeholder_image = folder / "profile.jpg"
+placeholder_image.write_bytes(b"")  # Blank file as placeholder
+
+# Create ZIP archive
+zip_path = "/mnt/data/saanvi_resume_website.zip"
+with ZipFile(zip_path, "w") as zipf:
+    zipf.write(index_file, arcname="index.html")
+    zipf.write(placeholder_image, arcname="profile.jpg")
+
+zip_path
